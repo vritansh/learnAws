@@ -7,7 +7,8 @@
       "Properties" : {
         "ImageId" : "ami-0ce933e2ae91880d3",
         "InstanceType" : "t2.micro",
-        "KeyName" : "AccessToken"
+        "KeyName" : "AccessToken",
+        "AvailabilityZone" :"ap-south-1"
       }
     }
   }
