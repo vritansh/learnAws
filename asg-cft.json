@@ -31,6 +31,12 @@
           "LaunchTemplateId":{
             "Ref":"LaunchTemplate"
           },
+         "Version":{
+            "Fn::GetAtt":[
+              "LaunchTemplate",
+              "LatestVersionNumber"
+            ]
+          }
         }       
       }
     }
