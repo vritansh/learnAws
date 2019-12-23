@@ -5,7 +5,7 @@
     "MyEC2Instance" : {
       "Type" : "AWS::EC2::Instance",
       "Properties" : {
-        "ImageId" : "ami-0ce933e2ae91880d3",
+        "ImageId" : "ami-00068cd7555f543d5",
         "InstanceType" : "t2.micro",
         "KeyName" : "AccessToken",
         "AvailabilityZone" :"ap-south-1"
