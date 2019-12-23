@@ -2,10 +2,7 @@
   "AWSTemplateFormatVersion":"2010-09-09",
   "Parameters":{
     "myImageId":{
-      "Type":"AWS::EC2::Image::Id",
-      "Properties" : {
-       "ImageId" : "ami-00068cd7555f543d5"
-      }
+      "Type":"AWS::EC2::Image::Id"
     }
   },
   "Resources":{
