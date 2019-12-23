@@ -3,7 +3,9 @@
   "Parameters":{
     "myImageId":{
       "Type":"AWS::EC2::Image::Id",
-      "Value" :"ami-00068cd7555f543d5"
+      "Properties" : {
+       "ImageId" : "ami-00068cd7555f543d5"
+      }
     }
   },
   "Resources":{
