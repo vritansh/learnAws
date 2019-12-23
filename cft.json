@@ -1,14 +1,13 @@
-"SimpleConfig" : {
-   "Type" : "AWS::AutoScaling::LaunchConfiguration",
-   "Properties" : {
-      "ImageId" : "ami-0ff8a91507f77f867",
-      "InstanceType" : "m1.small",
-      "BlockDeviceMappings" : [ {
-            "DeviceName" : "/dev/sdk",
-            "Ebs" : {"VolumeSize" : "50"}
-         }, {
-            "DeviceName" : "/dev/sdc",
-            "VirtualName" : "ephemeral0"
-      } ]
-   }
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "A simple EC2 instance",
+  "Resources" : {
+    "MyEC2Instance" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "ImageId" : " ami-0ce933e2ae91880d3 ",
+        "InstanceType" : "t2.micro"
+      }
+    }
+  }
 }
