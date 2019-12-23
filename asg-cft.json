@@ -1,0 +1,37 @@
+{
+  "AWSTemplateFormatVersion":"2010-09-09",
+  "Parameters":{
+    "myImageId":{
+      "Type":"AWS::EC2::Image::Id",
+      "Value" :"ami-00068cd7555f543d5"
+    }
+  },
+  "Resources":{
+    "LaunchTemplate":{
+      "Type":"AWS::EC2::LaunchTemplate",
+      "Properties":{
+        "LaunchTemplateName":{"Fn::Sub":"${AWS::StackName}-launch-template"},
+        "LaunchTemplateData":{
+          "ImageId":{"Ref":"myImageId"},
+          "KeyName":"EC2 Tutorial2",
+          "InstanceType":"t2.micro"
+        }
+      }
+    },
+    "myASG":{
+      "Type":"AWS::AutoScaling::AutoScalingGroup",
+      "Properties":{
+        "AutoScalingGroupName":{"Fn::Sub":"${AWS::StackName}-asg"},
+        "MinSize":1,
+        "MaxSize":6,
+        "DesiredCapacity":2,
+        "HealthCheckGracePeriod":300,
+        "LaunchTemplate":{
+          "LaunchTemplateId":{
+            "Ref":"LaunchTemplate"
+          },
+        }       
+      }
+    }
+  }
+}
