@@ -1,51 +1,14 @@
-{
-  "AWSTemplateFormatVersion":"2010-09-09",
-  "Parameters":{
-    "myImageId":{
-      "Type":"AWS::EC2::Image::Id"
-    }
-  },
-  "Resources":{
-    "LaunchTemplate":{
-      "Type":"AWS::EC2::LaunchTemplate",
-      "Properties":{
-        "LaunchTemplateName":{"Fn::Sub":"${AWS::StackName}-launch-template"},
-        "LaunchTemplateData":{
-          "BlockDeviceMappings":[{
-            "Ebs":{"VolumeSize":8},
-            "DeviceName":"/dev/sdf"}],
-          "CreditSpecification":{
-            "CpuCredits":"unlimited"
-          },
-          "ImageId":{"Ref":"myImageId"},
-          "KeyName":"my-key-pair-useast2",
-          "InstanceType":"t2.micro",
-          "Monitoring":{"Enabled":true},
-          "SecurityGroupIds":["sg-7c227019", "sg-903004f8"]
-        }
-      }
-    },
-    "myASG":{
-      "Type":"AWS::AutoScaling::AutoScalingGroup",
-      "Properties":{
-        "AutoScalingGroupName":"myASG",
-        "MinSize":1,
-        "MaxSize":6,
-        "DesiredCapacity":2,
-        "HealthCheckGracePeriod":300,
-        "LaunchTemplate":{
-          "LaunchTemplateId":{
-            "Ref":"LaunchTemplate"
-          },
-          "Version":{
-            "Fn::GetAtt":[
-              "LaunchTemplate",
-              "LatestVersionNumber"
-            ]
-          }
-        },
-        "VPCZoneIdentifier":["subnet-5ea0c127", "subnet-6194ea3b", "subnet-c934b782"]
-      }
-    }
-  }
+"SimpleConfig" : {
+   "Type" : "AWS::AutoScaling::LaunchConfiguration",
+   "Properties" : {
+      "ImageId" : "ami-0ff8a91507f77f867",
+      "InstanceType" : "m1.small",
+      "BlockDeviceMappings" : [ {
+            "DeviceName" : "/dev/sdk",
+            "Ebs" : {"VolumeSize" : "50"}
+         }, {
+            "DeviceName" : "/dev/sdc",
+            "VirtualName" : "ephemeral0"
+      } ]
+   }
 }
