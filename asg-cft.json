@@ -13,7 +13,7 @@
         "LaunchTemplateName":{"Fn::Sub":"${AWS::StackName}-launch-template"},
         "LaunchTemplateData":{
           "ImageId":{"Ref":"myImageId"},
-          "KeyName":"EC2 Tutorial2",
+          "KeyName":"EC2 Tutorial",
           "InstanceType":"t2.micro"
         }
       }
