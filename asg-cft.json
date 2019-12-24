@@ -24,7 +24,7 @@
         "AutoScalingGroupName":{"Fn::Sub":"${AWS::StackName}-asg"},
         "MinSize":1,
         "MaxSize":6,
-        "DesiredCapacity":2,
+        "DesiredCapacity":1,
         "AvailabilityZones":["us-east-1a"],
         "HealthCheckGracePeriod":300,
         "LaunchTemplate":{
